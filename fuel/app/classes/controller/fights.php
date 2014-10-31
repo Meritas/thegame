@@ -47,8 +47,8 @@ class Controller_Fights extends Controller_Template
 
 			$enemy = array('health'=> Input::post('hp'));
 			$character = array('health'=> Input::post('ch_hp'));
-			$fight_state->add('hp', 'Enemy HP', array('type'=>'hidden', 'value'=>(Input::post('hp') - rand( $result['dmg_min'],$result['dmg_max']) ) ));
-			$fight_state->add('ch_hp', 'Character HP', array('type'=>'hidden', 'value'=>(Input::post('ch_hp') - rand(1, $result_ch['ch_stat_str']))));
+			$fight_state->add('hp', 'Enemy HP', array('type'=>'hidden', 'value'=>(Input::post('ch_hp') - rand(1, $result_ch['ch_stat_str']))));
+			$fight_state->add('ch_hp', 'Character HP', array('type'=>'hidden', 'value'=>(Input::post('hp') - rand( $result['dmg_min'],$result['dmg_max']) ) ));
 
 			$view->set('enemy_hp', $enemy['health']);
 			$view->set('character_hp', $character['health']);
