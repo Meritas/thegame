@@ -17,8 +17,7 @@ class Controller_Users extends Controller_Template
 				$view->set('errors', $result['errors'], false);
 			}
 			else{
-				Session::set_flash('success', 'Character created successfuly!');
-				Response::redirect('story/index');
+				Response::redirect('character_sheet/generate');
 			}
 		}
 		$view->set('reg', $form->build(), false);
@@ -26,18 +25,36 @@ class Controller_Users extends Controller_Template
 		$this->template->content = $view;
 	}
 
-	public function action_login()
-	{
-		$data["subnav"] = array('login'=> 'active' );
-		$this->template->title = 'Users &raquo; Login';
-		$this->template->content = View::forge('users/login', $data);
+	public function action_login(){
+
+		$view = View::forge('users/login');
+		$form = Fieldset::forge('login');
+		$auth = Auth::instance();
+
+		$form->add('username', 'Character name');
+		$form->add('password', 'Password', array('type'=> 'password'));
+		$form->add('submit', ' ', array('type'=> 'submit', 'value'=> "Link start"));
+
+		if(Input::post()){
+			if($auth->login(Input::post('username'), Input::post('password'))){
+				Session::set_flash('success', 'Welcome, '.$auth->instance()->get_screen_name());
+				Response::redirect('story/index');
+			}
+			else{
+				Session::set_flash('error', 'Link could not be established');
+			}
+		}
+
+		$view->set('form', $form->build(), false);
+		$this->template->title = 'Login to Alter World Online';
+		$this->template->content = $view;
 	}
 
 	public function action_logout()
 	{
-		$data["subnav"] = array('logout'=> 'active' );
+		Auth::instance()->logout();
 		$this->template->title = 'Users &raquo; Logout';
-		$this->template->content = View::forge('users/logout', $data);
+		Response::redirect('./');
 	}
 
 	public function action_delete()

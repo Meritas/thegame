@@ -6,13 +6,29 @@
 	<?php echo Asset::css('bootstrap.css'); ?>
 	<style>
 		body { margin: 40px; }
+		ul, li{
+			list-style: none;
+		}
+		#logout_btn{
+			float: right;
+		}
 	</style>
 </head>
 <body>
+	<?php if(!Auth::instance()->check()){
+			$li = array(Html::anchor('users/register', 'Register'), Html::anchor('users/login', 'Login'));
+		}
+		else{
+			$li = array(Html::anchor('users/logout', 'Logout', array('id'=> 'logout_btn')), Html::Anchor('./character_sheet', 'Character Sheet'), Html::Anchor('./', 'Story'));
+		}
+		echo Html::ul($li);
+	?>
 	<div class="container">
 		<div class="col-md-12">
 			<h1><?php echo $title; ?></h1>
 			<hr>
+
+			
 <?php if (Session::get_flash('success')): ?>
 			<div class="alert alert-success">
 				<strong>Success</strong>

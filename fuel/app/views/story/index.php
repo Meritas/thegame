@@ -1,1 +1,1 @@
-<p>Welcome, Character!</p>
+<p>Welcome, <?php echo Auth::instance()->get_screen_name(); ?> </p>
