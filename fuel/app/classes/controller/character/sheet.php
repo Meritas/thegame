@@ -3,11 +3,9 @@
 class Controller_Character_Sheet extends Controller_Template
 {
 
-	public function action_generate($mode=1)//default mode for call from user registration
+	public function action_generate($id=null)//default mode for call from user registration
 	{
-		if($mode == 1){
-			Model_Character_Sheet::generate();
-		}
+			Model_Character_Sheet::generate($id);
 	}
 
 	public function action_view()

@@ -32,13 +32,20 @@ class Model_Character_Sheet extends \Orm\Model
 
 	protected static $_table_name = 'character_sheets';
 
-	public static function generate(){
+	public static function generate($id){
 
 		$usr_id = Auth::get_user_id();
 
+		if($id){
+			$usr_id = $id;
+		}
+		else{
+			$usr_id = $usr_id[1];
+		}
+
 		$sheet = self::forge(array(
 			'ch_name'=> Auth::instance()->get_screen_name(),
-			'usr_id'=> $usr_id[1],
+			'usr_id'=> $usr_id,
 			'ch_lvl'=> 1,
 			'ch_exp'=> 0,
 			'ch_stat_hp'=> 100,
