@@ -16,10 +16,10 @@
 </head>
 <body>
 	<?php if(!Auth::instance()->check()){
-			$li = array(Html::anchor('users/register', 'Register'), Html::anchor('users/login', 'Login'));
+			$li = array(Html::anchor('./register', 'Register'), Html::anchor('users/login', 'Login'));
 		}
 		else{
-			$li = array(Html::anchor('users/logout', 'Logout', array('id'=> 'logout_btn')), Html::Anchor('./character_sheet', 'Character Sheet'), Html::Anchor('./', 'Story'));
+			$li = array(Html::anchor('./logout', 'Logout', array('id'=> 'logout_btn')), Html::Anchor('./character_sheet', 'Character Sheet'), Html::Anchor('./', 'Story'));
 		}
 		echo Html::ul($li);
 	?>
