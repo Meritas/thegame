@@ -38,13 +38,17 @@ class Model_Character_Sheet extends \Orm\Model
 
 		if($id){
 			$usr_id = $id;
+			$query = DB::select('username')->from('users')->where('id', $usr_id)->execute();
+			$result = $query->current();
+			$ch_name = $result['username']; var_dump($ch_name); 
 		}
 		else{
 			$usr_id = $usr_id[1];
+			$ch_name = Auth::instance()->get_screen_name();
 		}
 
 		$sheet = self::forge(array(
-			'ch_name'=> Auth::instance()->get_screen_name(),
+			'ch_name'=> $ch_name,
 			'usr_id'=> $usr_id,
 			'ch_lvl'=> 1,
 			'ch_exp'=> 0,
