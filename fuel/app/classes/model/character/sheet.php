@@ -40,7 +40,7 @@ class Model_Character_Sheet extends \Orm\Model
 			$usr_id = $id;
 			$query = DB::select('username')->from('users')->where('id', $usr_id)->execute();
 			$result = $query->current();
-			$ch_name = $result['username']; var_dump($ch_name); 
+			$ch_name = $result['username'];	
 		}
 		else{
 			$usr_id = $usr_id[1];
