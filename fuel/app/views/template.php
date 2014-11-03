@@ -24,9 +24,11 @@
 		echo Html::ul($li);
 	?>
 	<div class="container">
-		<div class="col-md-12">
+		<div class="col-md-12">		
+		<?php if(Auth::instance()->check()){ ?>
 			<h1><?php echo $title; ?></h1>
 			<hr>
+		<?php } ?>
 
 			
 <?php if (Session::get_flash('success')): ?>
