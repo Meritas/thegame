@@ -1,0 +1,49 @@
+{{product.name}}
+<em class="pull-right">${{product.price}}</em> <!--product-title.html-->
+
+
+<h3 ng-include="'product-title.html'"></h3>
+
+
+
+
+<!------------------------------------------- -->
+
+<!-- element directive -->
+<product-title></product-title>
+
+
+<!-- <h3 product-title></h3> -->
+
+
+
+
+
+<!----------------------------------------- -->
+
+
+<section>
+<!-- content -->
+</section>				<!-- product-panels.html -->
+
+
+
+
+<h3> <product-title> </h3>
+<product-panels ng-controller="PanelController as panels">
+
+</product-panels>				<!-- index.html -->
+
+
+
+
+<!-------------------------------------------------- -->
+
+$http({method: GET, url: '/products.json' });
+
+$http.get('/products.json', { apiKey: 'myApiKey'});
+
+
+
+
+
