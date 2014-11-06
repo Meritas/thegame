@@ -3,6 +3,31 @@
 class Controller_Fights extends Controller_Template
 {
 
+	public function action_index($id){
+
+		$view = View::forge('fights/index');
+		if(isset($id)) $view->set('mobId', $id);
+		$this->template->title = '';
+		$this->template->content = $view;
+
+
+        // returned Response object takes precedence and will show content without template
+        //return new Response(View::forge('fights/json', $data));
+	}
+
+	public function action_fetch(){
+
+		$data['title']   = "Example Page";
+        $data['content'] = "Don't show me in the template";
+		return new Response(View::forge('fights/json', $data));
+	}
+
+	public function action_getmob(){
+		$data['title']   = "Example Page";
+        $data['content'] = "Don't show me in the template";
+		return new Response(View::forge('fights/requests/getmob', $data));
+	}
+
 	public function action_start($id){
 
 		$query = DB::select()->from('enemies')->where('id', $id)->execute();
@@ -81,4 +106,8 @@ class Controller_Fights extends Controller_Template
 		$this->template->content = View::forge('fights/end', $data);
 	}
 
+	public function action_start_fight(){
+		echo json_encode('40');
+		exit;
+	}
 }
