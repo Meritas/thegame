@@ -19,6 +19,7 @@ class Controller_Fights extends Controller_Template
 
 		$data['title']   = "Example Page";
         $data['content'] = "Don't show me in the template";
+        $data['post'] = $_POST;
 		return new Response(View::forge('fights/json', $data));
 	}
 
