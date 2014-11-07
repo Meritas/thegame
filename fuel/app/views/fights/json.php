@@ -1,3 +1,1 @@
-{
-  "int": 7
-}
+<?php var_dump( $post); ?>
