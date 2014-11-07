@@ -3,7 +3,7 @@
 
 	var MAIN_PATH = 'http://localhost/thegame/';
 
-	app.config(['$httpProvider', function($httpProvider, RestangularProvider) {
+	/*app.config(['$httpProvider', function($httpProvider, RestangularProvider) {
 	    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 	    $httpProvider.defaults.transformRequest = [function(data) {
 	        if (_.isObject(data)) {
@@ -17,7 +17,7 @@
 	    RestangularProvider.setResponseExtractor(function(response, op, what, url) {
 	        return response.data;
 	    });
-	});
+	});*/
 
 
 
@@ -46,6 +46,7 @@
 			var request = $http({
                     method: "post",
                     url: MAIN_PATH + 'fights/getmob.php',
+                    transformRequest: transformRequestAsFormPost,
                     data: {
                         id: 4,
                         name: "Kim",
