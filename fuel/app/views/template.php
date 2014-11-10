@@ -14,7 +14,7 @@
 		}
 	</style>
 	<?php
-		echo Asset::js(array('angular.min.js', 'game.js', 'angular-ui-router.js'));
+		echo Asset::js(array('angular.min.js', 'game.js', 'angular-ui-router.js', 'angular-route.js', 'angular-resource.js'));
 	 ?>
 </head>
 <body>
@@ -28,7 +28,7 @@
 	?>
 	<div class="container" ng-controller="GameBorder as GameBorder">
 		<div class="col-md-12">
-		{{4+4}}		
+		{{4+4}}
 		<?php if(Auth::instance()->check()){ ?>
 			<h1><?php echo $title; ?></h1>
 			<hr>

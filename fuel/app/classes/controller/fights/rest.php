@@ -23,6 +23,11 @@ class Controller_Fights_Rest extends Controller_Rest
 
         return $this->response(json_encode($response));
     }
+
+    public function get_view(){
+        $view = View::forge('fights/start');
+        return $this->response($view);
+    }
 }
 
 ?>

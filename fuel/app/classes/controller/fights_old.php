@@ -1,9 +1,9 @@
 <?php
 
-class Controller_Fights extends Controller_Template
+class Controller_Fights extends Controller //_Template
 {
 
-	public function action_index($id){
+	/*public function action_index(){
 
 		$view = View::forge('fights/index');
 		if(isset($id)) $view->set('mobId', $id);
@@ -29,7 +29,9 @@ class Controller_Fights extends Controller_Template
 		return new Response(View::forge('fights/requests/getmob', $data));
 	}
 
-	public function action_start($id){
+	public function action_start($id=0){
+
+		echo $id;
 
 		$query = DB::select()->from('enemies')->where('id', $id)->execute();
 		$result = $query->current();
@@ -110,5 +112,5 @@ class Controller_Fights extends Controller_Template
 	public function action_start_fight(){
 		echo json_encode('40');
 		exit;
-	}
+	}*/
 }

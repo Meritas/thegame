@@ -1,7 +1,20 @@
 (function(){
-	var app = angular.module('game', ['ui.router']);
+	var app = angular.module('game', ['ngResource', 'ngRoute', 'ui.router']);
 
-	var MAIN_PATH = 'http://localhost:3000/thegame/';
+	var MAIN_PATH = 'http://localhost/thegame/';
+
+    app.config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.
+            when('/test/:id',{
+                templateUrl: function($stateParams){
+                    return 'fights/actions/start/' + $stateParams.id;
+                }, 
+                controller: 'FightController'
+            }).
+            otherwise({
+                templateUrl: 'story/index',
+            });
+    }]);
 
 	app.controller('GameBorder', function(){
 
