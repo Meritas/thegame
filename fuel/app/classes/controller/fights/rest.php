@@ -16,8 +16,12 @@ class Controller_Fights_Rest extends Controller_Rest
     }
 
     public function post_start(){
-        $post = file_get_contents('php://input');
-        return $this->response();
+        $post = json_decode(file_get_contents('php://input'), true);
+        
+        $query = DB::select()->from('enemies')->where('id', $post['mobId'])->execute();        
+        $response['mobData'] = $query->current();
+
+        return $this->response(json_encode($response));
     }
 }
 
