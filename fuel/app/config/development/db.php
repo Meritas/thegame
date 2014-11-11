@@ -5,10 +5,12 @@
 
 return array(
 	'default' => array(
+		'type'           => 'pdo',
 		'connection'  => array(
 			'dsn'        => 'pgsql:host=localhost;dbname=d8qs65cemqupe2',
 			'username'   => 'dncglveqepldhf',
 			'password'   => 'TcAoOVviwh71pXWHo54hoUc8At',
 		),
+		'charset'        => 'utf8',
 	),
 );
