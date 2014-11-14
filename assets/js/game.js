@@ -7,13 +7,13 @@
         $routeProvider.
             when('/test/:id',{
                 templateUrl: function($stateParams){
-                    return 'fights/actions/start/' + $stateParams.id;
+                    return 'fights/actions/start/:id';// + $stateParams.id;
                 }, 
                 controller: 'FightController'
             }).
             otherwise({
-                templateUrl: 'story/index',
-            });
+                templateUrl: 'story/actions/enemies'
+            })
     }]);
 
 	app.controller('GameBorder', function(){
